@@ -1,15 +1,10 @@
 module.exports = {
-    theme: {
-      extend: {
-        fontFamily: {
-          default: [
-            'Ruberoid'
-          ],
-          extra: [
-            'Ruberoid Extra',
-          ],
-        }
-      },
-    },
-  };
-  
+  theme: {
+    extend: {
+      fontFamily: {
+        default: ['Ruberoid'],
+        extra: ['Ruberoid Extra']
+      }
+    }
+  }
+};
