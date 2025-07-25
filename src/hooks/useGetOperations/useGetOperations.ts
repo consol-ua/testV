@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
-type Posts = Record<number, { name: string }>;
+type OperationsType = Record<number, { name: string }>;
 
 function useGetOperations() {
-  async function fetchOperations(): Promise<Posts> {
+  async function fetchOperations(): Promise<OperationsType> {
     const response = await fetch('/api/operations');
 
     return response.json();

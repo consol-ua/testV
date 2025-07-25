@@ -23,36 +23,28 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Кастомізація скролбару для Webkit-браузерів (Chrome, Edge, Safari)
-   Це найпопулярніший спосіб кастомізації
-*/
+body,
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #9c9c9c #1a1a1a;
+}
+
 ::-webkit-scrollbar {
-  width: 6px; /* Ширина скролбару */
-  height: 6px; /* Висота для горизонтального скролбару */
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a; /* Колір фону скролбару, відповідає основному фону */
-  border-radius: 5px; /* Заокруглення кутів треку */
+  background: #1a1a1a;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9c9c9c; /* Колір повзунка, відповідає кольору кнопок */
-  border-radius: 5px; /* Заокруглення кутів повзунка */
-  border: 1px solid #333; /* Невеликий темний бордюр для відділення */
+  background: #9c9c9c;
+  border-radius: 5px;
+  border: 1px solid #333;
 }
 
-/* Колір повзунка при наведенні */
 ::-webkit-scrollbar-thumb:hover {
-  background: #b5b5b5; /* Трохи темніший відтінок при наведенні, як на кнопках */
-}
-
-/* Кастомізація скролбару для Firefox (нові стандарти)
-   Це буде працювати лише у Firefox
-*/
-body,
-html {
-  /* Застосовуємо ці властивості до всього тіла, щоб кастомізувати основний скролбар */
-  scrollbar-width: thin; /* 'auto' | 'thin' | 'none' */
-  scrollbar-color: #9c9c9c #1a1a1a; /* Колір повзунка (thumb) Колір треку (track) */
+  background: #b5b5b5;
 }

@@ -1,3 +1,4 @@
+import { useSelectedOperation } from '@/hooks/useSelectedOperation';
 import React, {
   Fragment,
   KeyboardEventHandler,
@@ -28,6 +29,7 @@ function searchSubstringCaseInsensitive(
 function MainContentSearchInput({ operations }: MainContentSearchInputProps) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [searchOperations, setSearchOperations] = useState(operations || []);
+  const { setOperation } = useSelectedOperation();
 
   const handleShowDropdown = useCallback(() => {
     setShowDropdown(true);
@@ -90,7 +92,12 @@ function MainContentSearchInput({ operations }: MainContentSearchInputProps) {
                     <div className="mx-6 border-solid border-t-1 border-[#9C9C9C]" />
                   )}
 
-                  <div className="p-4 px-6 hover:bg-gray-800 cursor-pointer">
+                  <div
+                    className="p-4 px-6 hover:bg-gray-800 cursor-pointer"
+                    onClick={() => {
+                      setOperation(operation.name);
+                    }}
+                  >
                     {operation.name}
                   </div>
                 </Fragment>

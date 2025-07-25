@@ -15,7 +15,7 @@ function MainHeader() {
       </div>
 
       <div className="flex items-center space-x-4 font-extra font-bold text-xl text-center leading-none tracking-widest">
-        <TimerHelper className="min-w-20 h-4" />
+        <TimerHelper withTotalTime className="min-w-20 h-4" />
 
         <UserAvatar />
 

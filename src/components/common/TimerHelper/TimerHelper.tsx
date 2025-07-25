@@ -1,6 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+
+import { useSelectedOperation } from '@/hooks/useSelectedOperation';
+import { useCompletedOperations } from '@/hooks/useCompletedOperations';
 
 const formatTime = (totalSeconds: number): string => {
   const hours = Math.floor(totalSeconds / 3600);
@@ -13,24 +16,37 @@ const formatTime = (totalSeconds: number): string => {
 };
 
 interface TimerHelperProps {
-  initialTimeInSeconds?: number;
   className?: string;
+  withTotalTime?: boolean;
 }
 
 const TimerHelper: React.FC<TimerHelperProps> = ({
-  initialTimeInSeconds = 0,
-  className = 'font-mono text-lg'
+  className = 'font-mono text-lg',
+  withTotalTime
 }) => {
-  const [timeInSeconds, setTimeInSeconds] = useState(initialTimeInSeconds);
+  const { selectedOperation, setOperationTimeInSeconds } =
+    useSelectedOperation();
+
+  const { completedOperation } = useCompletedOperations();
+
+  const timeShift = useMemo(
+    () =>
+      completedOperation?.reduce((sum, item) => {
+        return (
+          sum + (typeof item.timeInSecond === 'number' ? item.timeInSecond : 0)
+        );
+      }, 0) || 0,
+    [completedOperation]
+  );
+
   const [isVisible, setIsVisible] = useState(true);
-  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined;
 
-    if (isRunning) {
+    if (selectedOperation?.inprogress) {
       intervalId = setInterval(() => {
-        setTimeInSeconds((prevTime) => prevTime + 1);
+        setOperationTimeInSeconds(selectedOperation.timeInSeconds + 1);
         setIsVisible((prevTime) => !prevTime);
       }, 1000);
     }
@@ -40,27 +56,17 @@ const TimerHelper: React.FC<TimerHelperProps> = ({
         clearInterval(intervalId);
       }
     };
-  }, [isRunning]);
+  }, [selectedOperation, setOperationTimeInSeconds]);
 
-  const startTimer = useCallback(() => {
-    setIsRunning(true);
-  }, []);
-
-  const stopTimer = useCallback(() => {
-    setIsRunning(false);
-  }, []);
-
-  const resetTimer = useCallback(() => {
-    setIsRunning(false);
-    setTimeInSeconds(0);
-  }, []);
-
-  const displayTime = formatTime(timeInSeconds);
+  const displayTime = formatTime(
+    withTotalTime
+      ? timeShift + (selectedOperation?.timeInSeconds || 0)
+      : selectedOperation?.timeInSeconds || 0
+  );
 
   return (
-    <div className="flex items-center space-x-2 text-white">
-      <div className={className}>{displayTime}</div>
-      {isRunning && (
+    <div className="flex items-center space-x-1 text-white">
+      {selectedOperation?.inprogress && (
         <div
           className={`
         w-1 h-1 rounded-full bg-green-500
@@ -70,28 +76,11 @@ const TimerHelper: React.FC<TimerHelperProps> = ({
         />
       )}
 
-      {/* <div className="flex space-x-2">
-        <button
-          onClick={startTimer}
-          disabled={isRunning}
-          className="px-3 py-1 bg-green-600 rounded-md hover:bg-green-700 disabled:opacity-50"
-        >
-          Start
-        </button>
-        <button
-          onClick={stopTimer}
-          disabled={!isRunning}
-          className="px-3 py-1 bg-red-600 rounded-md hover:bg-red-700 disabled:opacity-50"
-        >
-          Stop
-        </button>
-        <button
-          onClick={resetTimer}
-          className="px-3 py-1 bg-gray-600 rounded-md hover:bg-gray-700"
-        >
-          Reset
-        </button>
-      </div> */}
+      {selectedOperation?.pause && (
+        <div className="w-1 h-1 rounded-full bg-yellow-500 transition-opacity duration-500 ease-in-out" />
+      )}
+
+      <div className={className}>{displayTime}</div>
     </div>
   );
 };
