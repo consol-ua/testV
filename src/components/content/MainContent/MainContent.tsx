@@ -7,6 +7,8 @@ import { useGetOperations } from '@/hooks/useGetOperations';
 import { MainContentButton } from './components/MainContentButton';
 import { MainContentSearchInput } from './components/MainContentSearchInput';
 
+const SHOW_BUTTON_COUNT = 3;
+
 function MainContent() {
   const {
     operations,
@@ -46,7 +48,7 @@ function MainContent() {
         <div className="flex flex-nowrap gap-6">
           {operations?.map(
             (operation, index) =>
-              index <= 2 && (
+              index < SHOW_BUTTON_COUNT && (
                 <MainContentButton
                   key={operation?.name}
                   operation={operation?.name}

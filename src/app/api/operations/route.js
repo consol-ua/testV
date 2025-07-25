@@ -2,17 +2,16 @@
 import https from 'https';
 
 const agent = new https.Agent({
-  rejectUnauthorized: false // Це відключає перевірку сертифіката
+  rejectUnauthorized: false
 });
 
 export async function GET(request) {
-  const url =
-    'https://93.114.128.195/rest-front/get_operations?token=RwjB74n2eiZlDQNSBGEEaa'; // Ваш проблемний URL
+  const url = `https://ip-93-114-128-195-98167.vps.hosted-by-mvps.net/test-front/get_operations?token=${process.env.NEXT_PUBLIC_API_TOKEN || ''}`;
 
   try {
     const response = await fetch(url, {
       method: 'GET',
-      agent: agent // Передаємо кастомний агент
+      agent: agent
     });
 
     if (!response.ok) {
@@ -26,15 +25,13 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error('Error fetching data:', error);
-    // Для відладки можна повернути деталі помилки
     return new Response(
       JSON.stringify({
         error: 'Failed to fetch operations',
         details: error.message,
-        code: error.code, // ERR_TLS_CERT_ALTNAME_INVALID
+        code: error.code,
         reason: error.reason,
         host: error.host
-        // ... інші корисні деталі з об'єкта error
       }),
       {
         status: 500,
