@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "../../font/stylesheet.css";
+@import 'tailwindcss';
+@import './fonts/stylesheet.css';
 
 :root {
   --background: #ffffff;
@@ -23,11 +23,9 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Ruberoid", sans-serif;
+  font-family: 'Ruberoid', sans-serif;
   background-image: url('/background.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
-
-
