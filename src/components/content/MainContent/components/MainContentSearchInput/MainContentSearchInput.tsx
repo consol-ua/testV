@@ -7,6 +7,8 @@ interface MainContentSearchInputProps {
 }
 
 function MainContentSearchInput({ operations }: MainContentSearchInputProps) {
+  const searchOperations = operations || [];
+
   return (
     <div className="relative mb-12">
       <input
@@ -33,11 +35,18 @@ function MainContentSearchInput({ operations }: MainContentSearchInputProps) {
         id="operation-dropdown"
         className="absolute w-full mt-2 bg-[#1a1a1a] border border-[#9C9C9C] rounded-lg shadow-lg overflow-hidden"
       >
-        <div className="divide-solid divide-y-1 divide-[#9C9C9C]">
-          <div className="p-4 hover:bg-gray-800 cursor-pointer">Переробка</div>
-          <div className="p-4 hover:bg-gray-800 cursor-pointer">Переробка</div>
-          <div className="p-4 hover:bg-gray-800 cursor-pointer">Переробка</div>
-          <div className="p-4 hover:bg-gray-800 cursor-pointer">Переробка</div>
+        <div>
+          {searchOperations.map(
+            (operation, index) =>
+              index <= 4 && (
+                <>
+                  <div className="p-4 px-6  hover:bg-gray-800 cursor-pointer">
+                    Переробка
+                  </div>
+                  <div className="mx-6 border-solid border-t-1 border-[#9C9C9C]" />
+                </>
+              )
+          )}
         </div>
       </div>
     </div>
