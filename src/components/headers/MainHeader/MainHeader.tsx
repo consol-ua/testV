@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MenuButton } from '@/components/common/MenuButton';
+import { MenuButton } from '@/components/headers/MainHeader/components/MenuButton';
 import { TimerHelper } from '@/components/common/TimerHelper';
 
 import { VyriyLogo } from '@/icons/VyriyLogo';

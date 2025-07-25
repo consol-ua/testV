@@ -60,13 +60,15 @@ const TimerHelper: React.FC<TimerHelperProps> = ({
   return (
     <div className="flex items-center space-x-2 text-white">
       <div className={className}>{displayTime}</div>
-      <div
-        className={`
+      {isRunning && (
+        <div
+          className={`
         w-1 h-1 rounded-full bg-green-500
         transition-opacity duration-500 ease-in-out
         ${isVisible ? 'opacity-100' : 'opacity-0'}
       `}
-      />
+        />
+      )}
 
       {/* <div className="flex space-x-2">
         <button
