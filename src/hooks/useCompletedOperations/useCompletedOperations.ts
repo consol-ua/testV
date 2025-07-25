@@ -30,7 +30,7 @@ function useCompletedOperations() {
 
   return {
     setCompletedOperations,
-    completedOperation: value
+    completedOperations: value || []
   };
 }
 

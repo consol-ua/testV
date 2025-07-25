@@ -1,8 +1,10 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 import { useMainSidebarState } from './hooks/useMainSidebarState';
+
 import { CloseButton } from './components/CloseButton';
 import { VyriyLogo } from '@/icons/VyriyLogo';
 
@@ -25,7 +27,20 @@ function MainSidebar() {
       >
         <div className="flex items-center space-x-4 sm:space-x-10">
           <CloseButton />
-          <VyriyLogo />
+          <Link href={'/'} onClick={handleCloseSideBar}>
+            <VyriyLogo />
+          </Link>
+        </div>
+
+        <div className="py-20">
+          <Link
+            href={'/stats'}
+            onClick={handleCloseSideBar}
+            className="block cursor-pointer w-full text-white text-xl font-semibold py-4 px-8 rounded-2xl border border-gray-600 shadow-lg transition duration-300 ease-in-out hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 text-center"
+          >
+            <span></span>
+            Статистика
+          </Link>
         </div>
       </div>
     </>

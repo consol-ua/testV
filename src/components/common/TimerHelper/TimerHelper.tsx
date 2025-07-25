@@ -27,16 +27,16 @@ const TimerHelper: React.FC<TimerHelperProps> = ({
   const { selectedOperation, setOperationTimeInSeconds } =
     useSelectedOperation();
 
-  const { completedOperation } = useCompletedOperations();
+  const { completedOperations } = useCompletedOperations();
 
   const timeShift = useMemo(
     () =>
-      completedOperation?.reduce((sum, item) => {
+      completedOperations?.reduce((sum, item) => {
         return (
           sum + (typeof item.timeInSecond === 'number' ? item.timeInSecond : 0)
         );
       }, 0) || 0,
-    [completedOperation]
+    [completedOperations]
   );
 
   const [isVisible, setIsVisible] = useState(true);
