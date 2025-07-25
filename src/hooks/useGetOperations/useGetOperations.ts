@@ -67,11 +67,7 @@ type Posts = Record<number, { name: string }>;
 
 function useGetOperations() {
   async function fetchOperations(): Promise<Posts> {
-    const response = await fetch(
-      `http://93.114.128.195/test-front/get_operations?token=${process.env.NEXT_PUBLIC_API_TOKEN || ''}`,
-      { method: 'GET' }
-    );
-
+    const response = await fetch('/api/operations');
     // const response = new Promise<Posts>((resolve) => {
     //   setTimeout(() => resolve(testDate), 1000);
     // });
