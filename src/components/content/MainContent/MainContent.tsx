@@ -42,7 +42,7 @@ function MainContent() {
       {selectedOperation ? (
         <MainContentTimer />
       ) : (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col justify-center">
           <h1 className="text-xl sm:text-3xl font-bold uppercase mb-2 sm:mb-4">
             ОБЕРІТЬ ОПЕРАЦІЮ
           </h1>
