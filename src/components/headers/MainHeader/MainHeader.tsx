@@ -10,7 +10,7 @@ import { UserAvatar } from '@/components/common/UserAvatar';
 function MainHeader() {
   return (
     <header className="flex justify-between items-center">
-      <div className="flex items-center space-x-4 sm:space-x-10">
+      <div className="flex items-center space-x-2 sm:space-x-4 lg:space-x-10">
         <MenuButton />
 
         <Link href={'/'}>
@@ -18,12 +18,12 @@ function MainHeader() {
         </Link>
       </div>
 
-      <div className="flex items-center space-x-4 font-extra font-bold text-xl text-center leading-none tracking-widest">
+      <div className="flex items-center space-x-2 sm:space-x-4 font-extra font-bold text-lg lg:text-xl text-center leading-none tracking-widest">
         <TimerHelper withTotalTime className="min-w-20 h-4" />
 
         <UserAvatar />
 
-        <div className="min-w-20 h-4">ПЕРЕМОГОСЛАВ</div>
+        <div className="min-w-20 h-4 hidden sm:block">ПЕРЕМОГОСЛАВ</div>
       </div>
     </header>
   );

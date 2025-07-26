@@ -18,7 +18,7 @@ function StatsContent() {
   const { completedOperations } = useCompletedOperations();
 
   return (
-    <main className="flex items-center px-60">
+    <main className="flex items-center px-12 lg:px-24 xl:px-60">
       {completedOperations.length > 0 ? (
         <ul className="w-full divide-y divide-gray-200 dark:divide-gray-700 space-y-4">
           {completedOperations.map((operation, index) => (

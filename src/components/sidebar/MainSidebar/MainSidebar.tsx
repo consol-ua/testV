@@ -22,7 +22,7 @@ function MainSidebar() {
 
       <div
         id="drawer-navigation"
-        className={`fixed top-0 left-0 w-80 h-screen p-6 pb-10 sm:p-10 overflow-y-auto transition-transform bg-white/[0.05] border-r-1 border-solid border-[#999999] backdrop-blur-[156.17px] ${visible ? 'translate-x-0' : '-translate-x-full'}`}
+        className={`fixed top-0 left-0 w-60 sm:w-80 h-screen p-6 pb-10 sm:p-10 overflow-y-auto transition-transform bg-white/[0.05] border-r-1 border-solid border-[#999999] backdrop-blur-[156.17px] ${visible ? 'translate-x-0' : '-translate-x-full'}`}
         tabIndex={-1}
       >
         <div className="flex items-center space-x-4 sm:space-x-10">
@@ -36,7 +36,7 @@ function MainSidebar() {
           <Link
             href={'/stats'}
             onClick={handleCloseSideBar}
-            className="block cursor-pointer w-full text-white text-xl font-semibold py-4 px-8 rounded-2xl border border-gray-600 shadow-lg transition duration-300 ease-in-out hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 text-center"
+            className="block cursor-pointer w-full text-white text-lg sm:text-xl font-semibold py-2 sm:py-4 px-4 sm:px-8 rounded-2xl border border-gray-600 shadow-lg transition duration-300 ease-in-out hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 text-center"
           >
             <span></span>
             Статистика

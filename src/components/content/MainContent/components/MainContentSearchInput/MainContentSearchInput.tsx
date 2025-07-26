@@ -57,11 +57,11 @@ function MainContentSearchInput({ operations }: MainContentSearchInputProps) {
 
   return (
     <OutsideClickHandler display="contents" onOutsideClick={handleHideDropdown}>
-      <div className="relative mb-12">
+      <div className="relative mb-6 lg:mb-12">
         <input
           type="text"
           placeholder="Пошук операції"
-          className="relative w-full p-4 pl-6 pr-12 bg-[#1a1a1a] border border-[#9C9C9C] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-white"
+          className="relative w-full p-2 sm:p-4 pl-3 sm:pl-6 pr-12 bg-[#1a1a1a] border border-[#9C9C9C] rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-white"
           onFocus={handleShowDropdown}
           onKeyUp={handleSearch}
         />
@@ -89,11 +89,11 @@ function MainContentSearchInput({ operations }: MainContentSearchInputProps) {
               {searchOperations.map((operation, index) => (
                 <Fragment key={`${operation.name}+${index}`}>
                   {index !== 0 && (
-                    <div className="mx-6 border-solid border-t-1 border-[#9C9C9C]" />
+                    <div className="mx-3 sm:mx-6 border-solid border-t-1 border-[#9C9C9C]" />
                   )}
 
                   <div
-                    className="p-4 px-6 hover:bg-gray-800 cursor-pointer"
+                    className="py-2 sm:py-4 px-3 sm:px-6 hover:bg-gray-800 cursor-pointer"
                     onClick={() => {
                       setOperation(operation.name);
                     }}
@@ -104,7 +104,7 @@ function MainContentSearchInput({ operations }: MainContentSearchInputProps) {
               ))}
 
               {searchOperations?.length === 0 && (
-                <div className="h-full flex flex-col items-center justify-center p-4 px-6">
+                <div className="h-full flex flex-col items-center justify-center py-2 sm:py-4 px-3 sm:px-6">
                   Нічого не знайдено
                 </div>
               )}
